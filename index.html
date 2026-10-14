@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <!-- Temel meta etiketleri ve UTF-8 karakter desteği -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Danışmentliler Mimari Müzesi - 10. Sınıf Tarih Projesi">
+    <title>Danışmentliler Mimari Müzesi</title>
+
+    <!-- Tarayıcı sekmesi (favicon) için tarihi dairesel motif görseli -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+    <!-- Google Fonts: Başlıklar için Cinzel, gövde metinleri için Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Pannellum.js 360° panorama görüntüleyici CSS kütüphanesi (CDN) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
+
+    <!-- Projenin ana stil dosyası -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Google <model-viewer> 3D model görüntüleyici (CDN - modül olarak yüklenir) -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+
+    <!-- Pannellum.js 360° panorama görüntüleyici JS kütüphanesi (CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js" defer></script>
+</head>
+<body>
+
+    <!-- ==================== HEADER / NAVBAR ==================== -->
+    <header class="navbar">
+        <div class="nav-container">
+            <!-- Sol tarafta logo / site başlığı -->
+            <a href="#" class="nav-logo" data-section="ana-sayfa">
+                <!-- Marka ikonu: tarihi dairesel motif görseli (statik, tıklanamaz) -->
+                <img src="assets/images/favicon.png" alt="Logo" class="brand-logo-img" draggable="false">
+                <span class="logo-text">Danışmentliler Mimari Müzesi</span>
+            </a>
+
+            <!-- Sağ tarafta SPA geçiş butonları (sıralama: Ana Sayfa, Eserlerimiz, Tarihi, Kaynakça, Ekibimiz) -->
+            <nav class="nav-menu" id="navMenu">
+                <button class="nav-btn active" data-section="ana-sayfa">Ana Sayfa</button>
+                <button class="nav-btn" data-section="eserler">Eserlerimiz</button>
+                <button class="nav-btn" data-section="tarih">Tarihi</button>
+                <button class="nav-btn" data-section="kaynakca">Kaynakça</button>
+                <button class="nav-btn" data-section="gelistiriciler">Ekibimiz</button>
+            </nav>
+
+            <!-- Mobil hamburger menü butonu -->
+            <button class="hamburger" id="hamburgerBtn" aria-label="Menüyü Aç/Kapat" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ==================== SPA İÇERİK ALANI ==================== -->
+    <main class="app-main">
+
+        <!-- ---------- BÖLÜM 1: ANA SAYFA (HERO) ---------- -->
+        <section id="ana-sayfa" class="section active">
+            <div class="hero">
+                <div class="hero-card">
+                    <p class="hero-eyebrow">10. Sınıf Tarih Projesi</p>
+                    <h1 class="hero-title">Danışmentli Mimarisine Dijital Yolculuk</h1>
+                    <p class="hero-subtitle">Yapılacak</p>
+                    <!-- Hero butonları: önce tarih, sonra eserler (kaynakça butonu kaldırıldı) -->
+                    <div class="hero-actions">
+                        <button class="btn btn-primary" data-section="tarih">Danışmentlilerin Tarihi</button>
+                        <button class="btn btn-outline" data-section="eserler">Eserleri Keşfet</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero altındaki Müze Hakkında tanıtım bloğu (buton değil, doğrudan metin) -->
+            <article class="museum-intro">
+                <span class="intro-eyebrow">Dijital Müze Rehberi</span>
+                <h2 class="intro-title">Müze Hakkında</h2>
+                <p class="intro-text">Yapılacak</p>
+            </article>
+        </section>
+
+        <!-- ---------- BÖLÜM 2: ESERLERİMİZ (LİSTE + DETAY) ---------- -->
+        <section id="eserler" class="section">
+            <div class="section-head">
+                <h2 class="section-title">Eserlerimiz</h2>
+                <p class="section-desc">Yapılacak</p>
+            </div>
+
+            <!-- ===== ESER LİSTESİ (performans için burada 3D / 360° yüklenmez) ===== -->
+            <div class="artifact-list" id="artifactList">
+
+                <!-- ESER 1: Yağıbasan Medresesi -->
+                <button class="artifact-list-item" type="button" data-artifact="yagibasan">
+                    <span class="artifact-index">01</span>
+                    <span class="artifact-list-body">
+                        <span class="artifact-list-head">
+                            <span class="artifact-name">Yağıbasan Medresesi</span>
+                            <span class="artifact-location">📍 Tokat / Niksar</span>
+                        </span>
+                        <span class="artifact-summary">
+                            Anadolu'nun ilk medreselerinden biri kabul edilen Yağıbasan Medresesi, Danışmentli
+                            döneminin eğitim ve mimari anlayışını yansıtır. Yapının plan şeması, taş işçiliği ve
+                            günümüze ulaşan bölümleri bu alanda ayrıntılı olarak ele alınacaktır. Eserin tarihsel
+                            süreç içindeki yeri ve restorasyon geçmişi de detaylandırılacaktır.
+                        </span>
+                        <span class="artifact-more">Daha fazlası için tıklayın →</span>
+                    </span>
+                </button>
+
+                <!-- ESER 2: Niksar Ulu Camii -->
+                <button class="artifact-list-item" type="button" data-artifact="niksar">
+                    <span class="artifact-index">02</span>
+                    <span class="artifact-list-body">
+                        <span class="artifact-list-head">
+                            <span class="artifact-name">Niksar Ulu Camii</span>
+                            <span class="artifact-location">📍 Tokat / Niksar</span>
+                        </span>
+                        <span class="artifact-summary">
+                            Niksar Ulu Camii, Danışmentli Beyliği'nin şehircilik ve ibadet mimarisine dair önemli
+                            ipuçları sunar. Caminin harim düzeni, mihrap ve minare özellikleri ile süsleme
+                            anlayışı bu bölümde incelenecektir. Yapının geçirdiği onarımlar ve çevresiyle kurduğu
+                            ilişki de burada anlatılacaktır.
+                        </span>
+                        <span class="artifact-more">Daha fazlası için tıklayın →</span>
+                    </span>
+                </button>
+
+                <!-- ESER 3: Çağlayan Köprüsü -->
+                <button class="artifact-list-item" type="button" data-artifact="caglayan">
+                    <span class="artifact-index">03</span>
+                    <span class="artifact-list-body">
+                        <span class="artifact-list-head">
+                            <span class="artifact-name">Çağlayan Köprüsü</span>
+                            <span class="artifact-location">📍 Amasya</span>
+                        </span>
+                        <span class="artifact-summary">
+                            Çağlayan Köprüsü, Danışmentli dönemi mimarisinin dikkat çekici bir örneğidir. Köprünün yapısal özellikleri, süsleme anlayışı ve çevresiyle kurduğu ilişki bu bölümde incelenecektir. Eserin tarihi ve kültürel önemi de burada detaylandırılacaktır.
+                        </span>
+                        <span class="artifact-more">Daha fazlası için tıklayın →</span>
+                    </span>
+                </button>
+
+            </div>
+
+            <!-- ===== ESER DETAY / STREET VIEW EKRANI (liste tıklanınca açılır) ===== -->
+            <div class="artifact-detail" id="artifactDetail" aria-hidden="true">
+
+                <!-- Geri dön butonu -->
+                <button class="detail-back" id="detailBack" type="button">
+                    <span aria-hidden="true">←</span> Eserler Listesine Dön
+                </button>
+
+                <!-- Detay başlığı ve konum bilgisi -->
+                <div class="detail-header">
+                    <span class="artifact-badge">3D &amp; 360° &amp; Konum</span>
+                    <h2 class="detail-title" id="detailTitle">Eser Adı</h2>
+                    <p class="detail-location" id="detailLocation">📍 Konum</p>
+                </div>
+
+                <!-- Detaylı açıklama metni -->
+                <div class="detail-block">
+                    <h3 class="detail-block-title">Eser Açıklaması</h3>
+                    <p class="detail-text" id="detailText">Yapılacak</p>
+                </div>
+
+                <!-- 3D Model alanı -->
+                <div class="detail-block">
+                    <div class="viewer-3d-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <h3 class="detail-block-title" style="margin-bottom: 0;">3D Model</h3>
+                        <!-- Otomatik Dönme Kontrol Butonu -->
+                        <button type="button" id="toggleAutoRotateBtn" class="btn-toggle-rotate">
+                            🔄 Otomatik Dönme: Kapalı
+                        </button>
+                    </div>
+
+                    <div class="viewer-3d">
+                        <model-viewer
+                            id="detailModel"
+                            class="model-viewer"
+                            src=""
+                            alt="Eser 3D Model"
+                            camera-controls
+                            shadow-intensity="1"
+                            exposure="1"
+                            reveal="auto"
+                            interaction-prompt="none">
+                            <!-- Model yüklenemezse gösterilecek yedek yazı -->
+                            <div slot="poster" class="viewer-fallback">3D model yükleniyor...</div>
+                        </model-viewer>
+                    </div>
+                </div>
+
+                <!-- İç Mekân 360° Görünüm alanı (Pannellum.js) -->
+                <div class="detail-block">
+                    <h3 class="detail-block-title">İç Mekân 360° Görünüm</h3>
+                    <!-- id="detailPano" alanını bir sarmalayıcı (wrapper) olarak güncelliyoruz -->
+                    <div class="viewer-panorama" id="detailPanoContainer">
+                        <div id="detailPano" class="pano-slot" data-panorama="">
+                            <div class="pano-placeholder">Yükleniyor...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Etkileşimli Google Street View (sokak düzeyinde gezinme) alanı -->
+                <div class="detail-block">
+                    <h3 class="detail-block-title">Sokak Görünümü / Konum İnceleme</h3>
+                    <div class="street-view">
+                        <iframe
+                            class="street-view-frame"
+                            id="detailMap"
+                            title="Etkileşimli Sokak Görünümü (Street View)"
+                            src=""
+                            loading="lazy"
+                            allow="fullscreen"
+                            allowfullscreen
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ---------- BÖLÜM 3: TARİHİ ---------- -->
+        <section id="tarih" class="section">
+            <div class="section-head">
+                <h2 class="section-title">Danışmentlilerin Tarihi</h2>
+                <p class="section-desc">Yapılacak</p>
+            </div>
+
+            <!-- Danışmentlilerin tarihi metin alanı -->
+            <div class="history-content">
+                <p>Yapılacak</p>
+            </div>
+        </section>
+
+        <!-- ---------- BÖLÜM 4: KAYNAKÇA ---------- -->
+        <section id="kaynakca" class="section">
+            <div class="section-head">
+                <h2 class="section-title">Kaynakça</h2>
+                <p class="section-desc">Yapılacak</p>
+            </div>
+
+            <div class="refs-grid">
+                <article class="ref-card">
+                    <span class="ref-index">01</span>
+                    <h3>Akademik Makale</h3>
+                    <p>Yapılacak</p>
+                </article>
+                <article class="ref-card">
+                    <span class="ref-index">02</span>
+                    <h3>Akademik Makale</h3>
+                    <p>Yapılacak</p>
+                </article>
+                <article class="ref-card">
+                    <span class="ref-index">03</span>
+                    <h3>Akademik Makale</h3>
+                    <p>Yapılacak</p>
+                </article>
+                <article class="ref-card">
+                    <span class="ref-index">04</span>
+                    <h3>Kitap / Monografi</h3>
+                    <p>Yapılacak</p>
+                </article>
+                <article class="ref-card">
+                    <span class="ref-index">05</span>
+                    <h3>İnternet Kaynağı</h3>
+                    <p>Yapılacak</p>
+                </article>
+                <article class="ref-card">
+                    <span class="ref-index">06</span>
+                    <h3>Diğer Kaynak</h3>
+                    <p>Yapılacak</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- ---------- BÖLÜM 5: EKİBİMİZ ---------- -->
+        <section id="gelistiriciler" class="section">
+            <div class="section-head">
+                <h2 class="section-title">Ekibimiz</h2>
+                <p class="section-desc">Yapılacak</p>
+            </div>
+
+            <div class="team-grid">
+                <article class="team-card">
+                    <div class="team-avatar">G1</div>
+                    <h3>Geliştirici 1</h3>
+                    <p class="team-role">Yapılacak</p>
+                    <p class="team-bio">Yapılacak</p>
+                </article>
+                <article class="team-card">
+                    <div class="team-avatar">G2</div>
+                    <h3>Geliştirici 2</h3>
+                    <p class="team-role">Yapılacak</p>
+                    <p class="team-bio">Yapılacak</p>
+                </article>
+                <article class="team-card">
+                    <div class="team-avatar">G3</div>
+                    <h3>Geliştirici 3</h3>
+                    <p class="team-role">Yapılacak</p>
+                    <p class="team-bio">Yapılacak</p>
+                </article>
+                <article class="team-card">
+                    <div class="team-avatar">G4</div>
+                    <h3>Geliştirici 4</h3>
+                    <p class="team-role">Yapılacak</p>
+                    <p class="team-bio">Yapılacak</p>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-brand">Danışmentliler Mimari Müzesi</p>
+            <p class="footer-copy">Danışmentliler Mimari Müzesi © 2026 - Tüm Hakları Saklıdır.</p>
+            <p class="footer-detail">10. Sınıf Tarih Projesi • Danışmentli Mimarisi • Dijital Müze</p>
+        </div>
+    </footer>
+
+    <!-- Proje scriptleri: SPA mantığı, 3D görüntüleyici ve panorama başlatıcı -->
+    <script src="js/main.js" defer></script>
+    <script src="js/viewer3d.js" defer></script>
+    <script src="js/panorama.js" defer></script>
+</body>
+</html>

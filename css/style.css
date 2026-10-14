@@ -1,0 +1,967 @@
+/* =========================================================
+   Danışmentliler Mimari Müzesi - Ana Stil Dosyası
+   Tema: Selçuklu / Danışmentli (Tarihi Anadolu Mimarisi)
+   ========================================================= */
+
+/* ---------------- TEMA DEĞİŞKENLERİ ---------------- */
+:root {
+    /* Tarihi renk paleti */
+    --stone-dark: #1C1917;      /* Derin Taş / Zemin Gri */
+    --parchment: #F5F5F4;       /* Parşömen / Krem Alanlar */
+    --turquoise: #0D9488;       /* Selçuklu Turkuazı / Yeşil Accent */
+    --amber-gold: #D97706;      /* Altın / Pirinç Detaylar */
+    --deep-wood: #2C1A0E;       /* Derin Ahşap / Kahve */
+
+    /* Yardımcı tonlar */
+    --stone-soft: #292524;
+    --parchment-dim: #E7E5E4;
+    --parchment-warm: #EFE6D5;  /* Sıcak krem / tarihi parşömen tonu (kart zeminleri) */
+    --gold-soft: rgba(217, 119, 6, 0.14);
+    --teal-soft: rgba(13, 148, 136, 0.14);
+
+    /* Tipografi */
+    --font-display: 'Cinzel', 'Playfair Display', serif;
+    --font-body: 'Plus Jakarta Sans', 'Inter', sans-serif;
+
+    /* Ölçüler ve efektler */
+    --nav-height: 72px;
+    --radius: 16px;
+    --radius-sm: 10px;
+    --shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+    --transition: 0.28s ease;
+}
+
+/* ---------------- GENEL SIFIRLAMA ---------------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--stone-dark);
+    color: var(--parchment);
+    line-height: 1.65;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+/* JS ile gizlenen elemanlar için yardımcı sınıf */
+.is-hidden {
+    display: none !important;
+}
+
+/* ---------------- HEADER / NAVBAR ---------------- */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: linear-gradient(180deg, var(--deep-wood) 0%, var(--stone-dark) 100%);
+    border-bottom: 1px solid rgba(217, 119, 6, 0.35);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+}
+
+.nav-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    height: var(--nav-height);
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--parchment);
+}
+
+/* Header marka logosu: tarihi dairesel motif görseli
+   Saf marka görselidir; buton hissi vermemesi için etkileşimsizdir. */
+.brand-logo-img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: var(--deep-wood);
+    border: 2px solid var(--amber-gold);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    /* Görsel tıklanabilir bir buton gibi davranmaz: imleç değişmez, hover almaz */
+    pointer-events: none;
+    cursor: default;
+    user-select: none;
+}
+
+.logo-text {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.5px;
+    color: var(--parchment);
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.nav-btn {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--parchment-dim);
+    padding: 9px 16px;
+    border-radius: 999px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-btn:hover {
+    color: var(--parchment);
+    background: var(--teal-soft);
+    border-color: rgba(13, 148, 136, 0.4);
+}
+
+/* Aktif menü butonu */
+.nav-btn.active {
+    background: var(--turquoise);
+    border-color: var(--turquoise);
+    color: #ffffff;
+    box-shadow: 0 6px 18px rgba(13, 148, 136, 0.35);
+}
+
+/* Hamburger menü (mobilde görünür) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    background: var(--teal-soft);
+    border: 1px solid rgba(13, 148, 136, 0.45);
+    border-radius: var(--radius-sm);
+}
+
+.hamburger span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: var(--parchment);
+    border-radius: 2px;
+    transition: var(--transition);
+}
+
+/* Hamburger açıkken çizgileri X şekline dönüştürür */
+.hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---------------- ANA İÇERİK / SPA BÖLÜMLERİ ---------------- */
+.app-main {
+    flex: 1;
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 36px 20px 64px;
+}
+
+/* Tüm bölümler gizli, yalnızca .active olan görünür */
+.section {
+    display: none;
+    animation: fadeIn 0.45s ease;
+}
+
+.section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-head {
+    text-align: center;
+    margin-bottom: 36px;
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.7rem, 4vw, 2.6rem);
+    color: var(--amber-gold);
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.section-desc {
+    color: var(--parchment-dim);
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+/* ---------------- HERO (ANA SAYFA) ---------------- */
+.hero {
+    background:
+        radial-gradient(circle at 20% 20%, rgba(13, 148, 136, 0.25), transparent 55%),
+        radial-gradient(circle at 85% 75%, rgba(217, 119, 6, 0.22), transparent 55%),
+        linear-gradient(160deg, var(--deep-wood) 0%, var(--stone-dark) 100%);
+    border: 1px solid rgba(217, 119, 6, 0.35);
+    border-radius: var(--radius);
+    padding: clamp(36px, 7vw, 84px) clamp(20px, 5vw, 60px);
+    text-align: center;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Dekoratif Selçuklu kenarlığı */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 1px dashed rgba(245, 245, 244, 0.18);
+    border-radius: var(--radius-sm);
+    pointer-events: none;
+}
+
+.hero-eyebrow {
+    display: inline-block;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--turquoise);
+    background: var(--teal-soft);
+    border: 1px solid rgba(13, 148, 136, 0.4);
+    padding: 6px 16px;
+    border-radius: 999px;
+    margin-bottom: 20px;
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 5vw, 3.2rem);
+    line-height: 1.2;
+    color: var(--parchment);
+    margin-bottom: 16px;
+}
+
+.hero-subtitle {
+    color: var(--parchment-dim);
+    font-size: 1.05rem;
+    max-width: 680px;
+    margin: 0 auto 30px;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+}
+
+/* Buton stilleri */
+.btn {
+    border: none;
+    padding: 13px 28px;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background: var(--turquoise);
+    color: #ffffff;
+    box-shadow: 0 10px 24px rgba(13, 148, 136, 0.35);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px rgba(13, 148, 136, 0.45);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--amber-gold);
+    border: 1px solid var(--amber-gold);
+}
+
+.btn-outline:hover {
+    background: var(--gold-soft);
+    transform: translateY(-3px);
+}
+
+/* ---------------- MÜZE HAKKINDA TANITIM BLOĞU ---------------- */
+.museum-intro {
+    margin-top: 34px;
+    background:
+        radial-gradient(circle at 12% 20%, rgba(13, 148, 136, 0.16), transparent 50%),
+        linear-gradient(135deg, var(--deep-wood) 0%, var(--stone-soft) 100%);
+    border: 1px solid rgba(217, 119, 6, 0.35);
+    border-left: 6px solid var(--amber-gold);
+    border-radius: var(--radius);
+    padding: clamp(26px, 5vw, 46px) clamp(22px, 5vw, 52px);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+/* Dekoratif ince iç çerçeve */
+.museum-intro::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border: 1px dashed rgba(245, 245, 244, 0.14);
+    border-radius: var(--radius-sm);
+    pointer-events: none;
+}
+
+.intro-eyebrow {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--turquoise);
+    margin-bottom: 10px;
+}
+
+.intro-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 3.4vw, 2.1rem);
+    color: var(--amber-gold);
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+}
+
+.intro-text {
+    color: var(--parchment-dim);
+    font-size: 1rem;
+    max-width: 880px;
+}
+
+/* ========================================================
+   ESERLERİMİZ - YATAY UZANAN LİSTE / KART BUTONLARI
+   (Bu görünümde HİÇBİR 3D model veya panorama yüklenmez)
+   ======================================================== */
+.artifact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Tek bir eser kartı butonu */
+.artifact-list-item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 22px;
+    width: 100%;
+    text-align: left;
+    padding: 26px 74px 26px 28px;
+    border: 1px solid rgba(217, 119, 6, 0.25);
+    border-left: 6px solid var(--amber-gold);
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, var(--stone-soft) 0%, rgba(28, 25, 23, 0.95) 100%);
+    color: var(--parchment);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    transition: var(--transition);
+    overflow: hidden;
+}
+
+.artifact-list-item:hover,
+.artifact-list-item:focus-visible {
+    transform: translateY(-5px);
+    border-color: rgba(13, 148, 136, 0.45); 
+    border-left-color: var(--turquoise);
+    box-shadow: 0 22px 48px rgba(0, 0, 0, 0.55);
+    outline: none;
+}
+
+/* Sağ taraftaki yönlendirme oku */
+.artifact-list-item::after {
+    content: "→";
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.6rem;
+    color: var(--amber-gold);
+    opacity: 0.6;
+    transition: var(--transition);
+}
+
+.artifact-list-item:hover::after,
+.artifact-list-item:focus-visible::after {
+    transform: translate(6px, -50%);
+    opacity: 1;
+    color: var(--turquoise);
+}
+
+/* Soldaki sıra numarası */
+.artifact-index {
+    font-family: var(--font-display);
+    font-size: 2.1rem;
+    line-height: 1;
+    min-width: 52px;
+    color: rgba(217, 119, 6, 0.25);
+}
+
+.artifact-list-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+}
+
+.artifact-list-head {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+}
+
+.artifact-name {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    color: var(--amber-gold);
+}
+
+.artifact-location {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--turquoise);
+}
+
+/* Özet metnin son satırlarını silikleştiren fade-out efekti */
+.artifact-summary {
+    display: block;
+    font-size: 0.94rem;
+    color: var(--parchment-dim);
+    max-height: 3.9em;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom, #000 45%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 45%, transparent 100%);
+}
+
+/* "Daha fazlası" ipucu etiketi */
+.artifact-more {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--turquoise);
+}
+
+/* ========================================================
+   ESER DETAY / STREET VIEW EKRANI
+   ======================================================== */
+.artifact-detail {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.artifact-detail.active {
+    display: block;
+}
+
+/* Geri dön butonu */
+.detail-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--parchment-dim);
+    border: 1px solid rgba(217, 119, 6, 0.5);
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: var(--transition);
+    margin-bottom: 26px;
+}
+
+.detail-back:hover {
+    background: var(--gold-soft);
+    color: var(--amber-gold);
+    transform: translateX(-4px);
+}
+
+.detail-header {
+    border-bottom: 1px dashed rgba(217, 119, 6, 0.4);
+    padding-bottom: 18px;
+    margin-bottom: 8px;
+}
+
+.detail-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    color: var(--amber-gold);
+    letter-spacing: 1px;
+    margin: 12px 0 8px;
+}
+
+.detail-location {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--turquoise);
+}
+
+/* Detay içi bloklar */
+.detail-block {
+    margin-top: 32px;
+}
+
+.detail-block-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--turquoise);
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(13, 148, 136, 0.35);
+}
+
+.detail-text {
+    color: var(--parchment-dim);
+    font-size: 0.98rem;
+}
+
+/* Yeniden kullanılabilir eser rozeti */
+.artifact-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--turquoise);
+    background: var(--teal-soft);
+    border: 1px solid rgba(13, 148, 136, 0.4);
+    padding: 4px 12px;
+    border-radius: 999px;
+}
+
+/* 3D model görüntüleyici alanı */
+.viewer-3d {
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: var(--stone-dark);
+    border: 1px solid rgba(217, 119, 6, 0.35);
+}
+
+.model-viewer {
+    width: 100%;
+    height: 420px;
+    background-color: var(--stone-dark);
+    --poster-color: transparent;
+}
+
+.viewer-fallback {
+    position: absolute;
+    inset: auto 0 12px 0;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--parchment-dim);
+    pointer-events: none;
+}
+
+/* 360° panorama görüntüleyici alanı */
+.viewer-panorama {
+    position: relative;
+    height: 380px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: var(--deep-wood);
+    border: 1px solid rgba(217, 119, 6, 0.4);
+}
+
+.pano-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: var(--parchment-dim);
+    letter-spacing: 1px;
+    z-index: 1;
+}
+
+/* Google Street View tarzı gömülü konum / sokak görünümü */
+.street-view {
+    position: relative;
+    height: 460px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: var(--deep-wood);
+    border: 1px solid rgba(217, 119, 6, 0.4);
+    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.4);
+}
+
+.street-view-frame {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+    filter: saturate(1.05) contrast(1.02);
+}
+
+/* ---------------- TARİHİ ---------------- */
+.history-content {
+    background: linear-gradient(180deg, var(--stone-soft) 0%, var(--stone-dark) 100%);
+    border: 1px solid rgba(217, 119, 6, 0.35);
+    border-left: 6px solid var(--amber-gold);
+    border-radius: var(--radius);
+    padding: clamp(26px, 5vw, 46px);
+    box-shadow: var(--shadow);
+}
+
+.history-content p {
+    color: var(--parchment-dim);
+    font-size: 1rem;
+}
+
+/* ---------------- KAYNAKÇA ---------------- */
+.refs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.ref-card {
+    background: linear-gradient(135deg, var(--stone-soft) 0%, rgba(44, 26, 14, 0.4) 100%);
+    color: var(--parchment);
+    border-radius: var(--radius);
+    padding: 26px 24px 24px;
+    border: 1px solid rgba(217, 119, 6, 0.25);
+    border-left: 5px solid var(--turquoise);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.ref-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(13, 148, 136, 0.45);
+    border-left-color: var(--amber-gold);
+}
+
+.ref-index {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    color: rgba(217, 119, 6, 0.15);
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    line-height: 1;
+}
+
+.ref-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--amber-gold);
+    margin-bottom: 8px;
+}
+
+.ref-card p {
+    font-size: 0.93rem;
+    color: var(--parchment-dim);
+}
+
+/* ---------------- EKİBİMİZ ---------------- */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 22px;
+}
+
+.team-card {
+    background: linear-gradient(180deg, var(--stone-soft) 0%, var(--stone-dark) 100%);
+    border: 1px solid rgba(217, 119, 6, 0.35);
+    border-radius: var(--radius);
+    padding: 30px 22px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.team-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--turquoise);
+}
+
+.team-avatar {
+    width: 74px;
+    height: 74px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--gold-soft);
+    border: 2px solid var(--amber-gold);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--amber-gold);
+}
+
+.team-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--parchment);
+    margin-bottom: 6px;
+}
+
+.team-role {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--turquoise);
+    margin-bottom: 12px;
+}
+
+.team-bio {
+    font-size: 0.92rem;
+    color: var(--parchment-dim);
+}
+
+/* ---------------- FOOTER ---------------- */
+.footer {
+    background: linear-gradient(0deg, var(--deep-wood) 0%, var(--stone-dark) 100%);
+    border-top: 1px solid rgba(217, 119, 6, 0.35);
+    padding: 30px 20px;
+    text-align: center;
+    margin-top: auto;
+}
+
+.footer-brand {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--amber-gold);
+    margin-bottom: 8px;
+}
+
+.footer-copy,
+.footer-detail {
+    font-size: 0.88rem;
+    color: var(--parchment-dim);
+}
+
+.footer-detail {
+    margin-top: 6px;
+    opacity: 0.75;
+}
+
+/* ================= RESPONSIVE / MOBİL UYUMLULUK ================= */
+
+/* Tablet ve altı: hamburger menü devreye girer */
+@media (max-width: 900px) {
+    .hamburger {
+        display: flex;
+    }
+
+    /* Mobil menü: gizli, .open ile açılır */
+    .nav-menu {
+        position: absolute;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        background: var(--deep-wood);
+        border-bottom: 1px solid rgba(217, 119, 6, 0.35);
+        padding: 14px 16px 20px;
+        transform: translateY(-140%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform var(--transition), opacity var(--transition);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-menu.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .nav-btn {
+        text-align: center;
+        padding: 13px 16px;
+        border-radius: var(--radius-sm);
+    }
+
+    .logo-text {
+        font-size: 0.92rem;
+        max-width: 210px;
+    }
+}
+
+/* Küçük ekranlar: eser listesi ve detay alanları sadeleşir */
+@media (max-width: 640px) {
+    .artifact-list-item {
+        flex-direction: column;
+        gap: 10px;
+        padding: 22px 56px 22px 22px;
+    }
+
+    .artifact-index {
+        font-size: 1.5rem;
+    }
+
+    .artifact-list-item::after {
+        right: 22px;
+    }
+}
+
+/* Küçük mobil cihazlar */
+@media (max-width: 560px) {
+    .app-main {
+        padding: 24px 14px 48px;
+    }
+
+    .logo-text {
+        max-width: 150px;
+        font-size: 0.82rem;
+        line-height: 1.2;
+    }
+
+    .brand-logo-img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .model-viewer {
+        height: 280px;
+    }
+
+    .viewer-panorama {
+        height: 260px;
+    }
+
+    .street-view {
+        height: 320px;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+    }
+}
+
+/* Google 360 / Panorama embed iframe tam ekran uyarlaması */
+#detailPano {
+    width: 100%;
+    height: 100%;
+}
+
+#detailPano iframe {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+    border: 0;
+    border-radius: var(--radius-sm);
+}
+
+.artifact-photo-showcase {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+.artifact-photo-showcase img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* =========================================================
+   Otomatik Döndürme Butonu - Geliştirilmiş Akıcı Tasarım
+   ========================================================= */
+.btn-toggle-rotate {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--parchment); /* Okunabilirliği artırmak için ana parşömen rengi */
+    background: linear-gradient(135deg, var(--stone-soft) 0%, rgba(28, 25, 23, 0.98) 100%);
+    border: 1px solid rgba(217, 119, 6, 0.45);
+    border-radius: 8px;
+    cursor: pointer;
+    /* Geçişlerin yavaş ve akıcı olması için süre ve eğri ayarlandı */
+    transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.btn-toggle-rotate:hover {
+    background: linear-gradient(135deg, rgba(217, 119, 6, 0.2) 0%, var(--stone-soft) 100%);
+    border-color: var(--amber-gold);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(217, 119, 6, 0.25);
+}
+
+.btn-toggle-rotate:active {
+    transform: translateY(0);
+}
+
+/* Otomatik döndürme AÇIK duruma geldiğindeki aktif stil (Selçuklu Turkuazı) */
+.btn-toggle-rotate.active {
+    background: linear-gradient(135deg, var(--turquoise) 0%, #0b7c72 100%);
+    border-color: var(--turquoise);
+    color: #ffffff;
+    box-shadow: 0 6px 20px rgba(13, 148, 136, 0.4);
+}
+
+.btn-toggle-rotate.active:hover {
+    background: linear-gradient(135deg, #0eaba0 0%, var(--turquoise) 100%);
+    border-color: #0eaba0;
+    color: #ffffff;
+    box-shadow: 0 8px 24px rgba(13, 148, 136, 0.5);
+}
