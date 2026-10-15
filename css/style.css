@@ -1,6 +1,6 @@
 /* =========================================================
-   Danışmentliler Mimari Müzesi - Ana Stil Dosyası
-   Tema: Selçuklu / Danışmentli (Tarihi Anadolu Mimarisi)
+   Dânişmendliler Mimari Müzesi - Ana Stil Dosyası
+   Tema: Selçuklu / Dânişmendli (Tarihi Anadolu Mimarisi)
    ========================================================= */
 
 /* ---------------- TEMA DEĞİŞKENLERİ ---------------- */
@@ -672,7 +672,7 @@ button {
     background: linear-gradient(135deg, var(--stone-soft) 0%, rgba(44, 26, 14, 0.4) 100%);
     color: var(--parchment);
     border-radius: var(--radius);
-    padding: 26px 24px 24px;
+    padding: 26px 24px 24px 68px;
     border: 1px solid rgba(217, 119, 6, 0.25);
     border-left: 5px solid var(--turquoise);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
@@ -690,10 +690,10 @@ button {
 .ref-index {
     font-family: var(--font-display);
     font-size: 2.2rem;
-    color: rgba(217, 119, 6, 0.15);
+    color: rgba(217, 119, 6, 0.25);
     position: absolute;
-    top: 12px;
-    right: 18px;
+    top: 20px;
+    left: 20px;
     line-height: 1;
 }
 
@@ -707,6 +707,50 @@ button {
 .ref-card p {
     font-size: 0.93rem;
     color: var(--parchment-dim);
+}
+
+/* Kaynakça kartı içindeki tıklanabilir bağlantı alanı */
+.ref-card .ref-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.ref-card .ref-link h3 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--amber-gold);
+    margin-bottom: 8px;
+    transition: var(--transition);
+}
+
+.ref-card:hover .ref-link h3 {
+    color: var(--turquoise);
+}
+
+.ref-card .ref-link p {
+    font-size: 0.93rem;
+    color: var(--parchment-dim);
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+/* "Kaynağa Git" aksiyon yazısı */
+.ref-action {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--turquoise);
+    margin-top: auto;
+    transition: var(--transition);
+}
+
+.ref-card:hover .ref-action {
+    transform: translateX(4px);
+    color: var(--amber-gold);
 }
 
 /* ---------------- EKİBİMİZ ---------------- */
@@ -964,4 +1008,88 @@ button {
     border-color: #0eaba0;
     color: #ffffff;
     box-shadow: 0 8px 24px rgba(13, 148, 136, 0.5);
+}
+
+/* =========================================================
+   TARİHİ BÖLÜMÜ MİMARİSİ
+   ========================================================= */
+
+.history-content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    background: linear-gradient(180deg, var(--stone-soft) 0%, var(--stone-dark) 100%);
+    border: 1px solid rgba(217, 119, 6, 0.35);
+    border-left: 6px solid var(--amber-gold);
+    border-radius: var(--radius);
+    padding: clamp(26px, 5vw, 46px);
+    box-shadow: var(--shadow);
+}
+
+.history-block {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.history-subtitle {
+    font-family: var(--font-display);
+    color: var(--amber-gold);
+    font-size: 1.35rem;
+    letter-spacing: 0.5px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(217, 119, 6, 0.25);
+}
+
+.history-text {
+    color: var(--parchment-dim);
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+.history-text em {
+    color: var(--amber-gold);
+    font-style: normal;
+}
+
+/* Hükümdarlar Kart Mimarisi */
+.rulers-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 6px;
+}
+
+.ruler-card {
+    background: rgba(41, 37, 36, 0.65);
+    padding: 18px 20px;
+    border-radius: var(--radius-sm);
+    border-left: 4px solid var(--turquoise);
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: var(--transition);
+}
+
+.ruler-card:hover {
+    transform: translateX(6px);
+    background: rgba(41, 37, 36, 0.9);
+    border-left-color: var(--amber-gold);
+}
+
+.ruler-title {
+    color: var(--turquoise);
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+    transition: var(--transition);
+}
+
+.ruler-card:hover .ruler-title {
+    color: var(--amber-gold);
+}
+
+.ruler-desc {
+    color: var(--parchment-dim);
+    font-size: 0.95rem;
+    line-height: 1.65;
 }

@@ -1,5 +1,5 @@
 /* =========================================================
-   Danışmentliler Mimari Müzesi - main.js
+   Dânişmendliler Mimari Müzesi - main.js
    SPA sayfa geçişleri, eser liste/detay yönetimi ve
    genel etkileşimler
    ========================================================= */

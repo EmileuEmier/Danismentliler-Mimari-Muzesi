@@ -1,5 +1,5 @@
 /* =========================================================
-   Danışmentliler Mimari Müzesi - viewer3d.js
+   Dânişmendliler Mimari Müzesi - viewer3d.js
    Google <model-viewer> kütüphanesi entegrasyonu ve kontrolü
 
    Yeni mimaride 3D modeller yalnızca eser DETAY ekranı

@@ -1,5 +1,5 @@
 /* =========================================================
-   Danışmentliler Mimari Müzesi - panorama.js
+   Dânişmendliler Mimari Müzesi - panorama.js
    Pannellum.js 360° Sanal Tur / Panorama entegrasyonu
 
    Yeni mimaride 360° görünüm yalnızca eser DETAY ekranı

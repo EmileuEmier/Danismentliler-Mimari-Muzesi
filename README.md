@@ -1,4 +1,4 @@
-# Danışmentliler Mimari Müzesi
+# Dânişmendliler Mimari Müzesi
 
 10. sınıf tarih projesi olarak geliştirilen, **Tek Sayfa Uygulama (SPA)** mimarisiyle hazırlanmış modern, responsive ve yüksek performanslı dijital müze.
 
@@ -7,7 +7,7 @@
 - **SPA Geçişleri:** Sayfa yenilenmeden Ana Sayfa / Eserlerimiz / Kaynakça / Ekibimiz bölümleri arasında geçiş (`.active` sınıf yönetimi).
 - **3D Görünüm:** Google `<model-viewer>` (CDN) ile döndürülebilir, yakınlaştırılabilir 3D eser modelleri (`assets/models/`).
 - **360° Sanal Tur:** Pannellum.js (CDN) ile fare ile pan-zoom yapılan 360° panorama görüntüleyiciler (`assets/panoramas/`).
-- **Tema:** Selçuklu / Danışmentli esintili tarihi renk paleti ve tipografi (Cinzel + Plus Jakarta Sans).
+- **Tema:** Selçuklu / Dânişmendli esintili tarihi renk paleti ve tipografi (Cinzel + Plus Jakarta Sans).
 - **Responsive:** Mobil hamburger menü ve mobil-öncelikli grid düzenleri.
 
 ## Klasör Yapısı
@@ -43,4 +43,4 @@ Danismentliler-Mimari-Muzesi/
 
 ## Lisans
 
-Danışmentliler Mimari Müzesi © 2026 - Tüm Hakları Saklıdır.
+Dânişmendliler Mimari Müzesi © 2026 - Tüm Hakları Saklıdır.
